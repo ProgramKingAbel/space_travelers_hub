@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
-const DragonsPage = () => {
-  return (
-    <div>DragonsPage</div>
-  )
-}
+const DragonsPage = () => (
+  <div>DragonsPage</div>
+);
 
-export default DragonsPage
+export default DragonsPage;
