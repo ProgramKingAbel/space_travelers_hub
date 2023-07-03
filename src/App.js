@@ -5,7 +5,7 @@ import { DragonsPage, MissionsPage, MyProfilePage, RocketsPage } from './Pages';
 
 const App = () => (
   <Routes>
-    <Route path='/' element={<Layout}>
+    <Route path='/' element={<Layout />}>
       <Route index element={<RocketsPage />} />
       <Route path='Dragons' element={<DragonsPage />} />
       <Route path='Missions' element={<MissionsPage />} />
