@@ -12,7 +12,7 @@ const App = () => (
       <Route path='Profile' element={<MyProfilePage />} />
     </Route>
   </Routes>
-)
+);
 
 export default App
 
