@@ -19,7 +19,7 @@ const DragonsPage = () => {
           id={dragon.id}
           name={dragon.name}
           type={dragon.type}
-          flickrImages={dragon.flickr_images[2]}
+          flickrImages={dragon.flickr_images[0]}
           description={dragon.description}
         />
       ))}
