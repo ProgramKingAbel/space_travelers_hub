@@ -12,3 +12,16 @@ export const fetchRockets = createAsyncThunk('rocket/fetchRocket', () => {
         .then((response) => response.data)
 })
 
+const rocketSlice = createSlice({
+    name: 'rockets',
+    initialState,
+    extraReducers: builder => {
+        builder.addCase(fetchRockets.fulfilled, (state, action) => {
+            state.loading = false,
+            state.rockets = action.payload
+            state.error = ''
+        })
+    }
+})
+
+export default rocketSlice.reducer;
