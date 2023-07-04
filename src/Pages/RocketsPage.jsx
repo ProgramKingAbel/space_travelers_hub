@@ -8,9 +8,15 @@ const RocketsPage = () => {
   useEffect(() => {
     dispatch(fetchRockets());
   }, []);
-  console.log(rockets);
+
   return (
-    <div>RocketsPage</div>
+    <ul>
+      {
+        rockets.map((rocket) => (
+          <li key={rocket.id}>{ rocket.rocket_name }</li>
+        ))
+      }
+    </ul>
   );
 };
 
