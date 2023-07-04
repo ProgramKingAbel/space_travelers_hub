@@ -4,10 +4,10 @@ import { fetchRockets } from '../redux/features/rockets/rocketsSlice';
 
 const RocketsPage = () => {
   const dispatch = useDispatch();
-  const rockets = useSelector((state) => state.rocket.rockets);
+  const { rockets } = useSelector((state) => state.rockets);
   useEffect(() => {
     dispatch(fetchRockets());
-  }, []);
+  }, [dispatch]);
 
   return (
     <ul>
