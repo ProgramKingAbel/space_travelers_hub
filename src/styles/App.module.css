@@ -4,6 +4,11 @@
   box-sizing: border-box;
 }
 
+<<<<<<< HEAD
 .mission-btn {
   width: 100px;
+=======
+body {
+  font-family: Montserrat, sans-serif;
+>>>>>>> development
 }

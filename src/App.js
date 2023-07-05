@@ -5,6 +5,7 @@ import Layout from './Components/Layout';
 import {
   DragonsPage, MissionsPage, MyProfilePage, RocketsPage,
 } from './Pages';
+import './styles/App.module.css';
 
 
 const App = () => (
