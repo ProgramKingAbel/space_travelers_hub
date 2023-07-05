@@ -3,3 +3,7 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+.mission-btn {
+  width: 100px;
+}

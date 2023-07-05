@@ -1,21 +1,18 @@
-/* eslint-disable */
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
+import Table from 'react-bootstrap/Table';
 import { fetchMission } from '../redux/features/missions/missionsSlice';
 import MissionItem from './MissionItem';
-import Table from 'react-bootstrap/Table';
-
 
 const MissionList = () => {
-  const dispatch = useDispatch()
-  const {spaceMission,isLoading,error} = useSelector((state)=> state.spaceMission)
+  const dispatch = useDispatch();
+  const { spaceMission, isLoading, error } = useSelector((state) => state.spaceMission);
 
-  useEffect(()=>{
-    if(spaceMission.length === 0){
-      dispatch(fetchMission())
+  useEffect(() => {
+    if (spaceMission.length === 0) {
+      dispatch(fetchMission());
     }
-   
-  },[dispatch,spaceMission.length])
+  }, [dispatch, spaceMission.length]);
 
   if (isLoading) {
     return (
@@ -23,59 +20,54 @@ const MissionList = () => {
         <h4>Loading...</h4>
       </div>
     );
-  } else if (error) {
+  } if (error) {
     return (
       <div>
-        <h4>Error: {error}</h4>
+        <h4>
+          Error:
+          {error}
+        </h4>
       </div>
     );
-  } else if (Object.keys(spaceMission).length === 0) {
+  } if (Object.keys(spaceMission).length === 0) {
     return (
       <div>
         <h3>No missions found</h3>
       </div>
     );
-  } else{
-    const missionData = Object.values(spaceMission);
-    return(
-     
-        <Table striped bordered hover variant="dark">
-          <thead>
-            <tr>
-            <th>Mission</th>
-              <th className="text-center">Description</th>
-              <th>Status</th>
-              <th>{' '}</th>
-            </tr>
-          </thead>
-          <tbody>
-        
-         {
-            missionData.map((item)=>(
-             
-            <MissionItem 
-            id={item.mission_id}
-            title={item.mission_name}
-            description={item.description}
-            statusCheck={item.statusCheck}
-            /> 
-            )
-            
-            )
-          }
-        
-          </tbody>
-        
-</Table>
-    
-    )}
-
   }
-  
+  const missionData = Object.values(spaceMission);
+  return (
+    <div className="mx-4">
+      <Table striped bordered hover responsive variant="light" className="mt-4">
+        <thead>
+          <tr>
+            <th>Mission</th>
+            <th className="text-center">Description</th>
+            <th>Status</th>
+            <th>{' '}</th>
+          </tr>
+        </thead>
+        <tbody>
 
- 
+          {
+            missionData.map((item) => (
 
+              <MissionItem
+                key={item.mission_id}
+                id={item.mission_id}
+                title={item.mission_name}
+                description={item.description}
+                statusCheck={item.statusCheck}
+              />
+            ))
+          }
 
+        </tbody>
 
+      </Table>
+    </div>
+  );
+};
 
 export default MissionList;

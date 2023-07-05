@@ -1,5 +1,8 @@
+import Container from 'react-bootstrap/Container';
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import '../styles/Navbar.css';
+import Navbars from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav';
 
 const links = [
   { path: '/', text: 'Rockets' },
@@ -9,17 +12,21 @@ const links = [
 ];
 
 const Navbar = () => (
-  <nav>
-    <h1>Logo here</h1>
-    <ul>
-      {links.map((link) => (
-        <li key={link.text}>
-          <NavLink to={link.path}>{ link.text }</NavLink>
-
-        </li>
-      ))}
-    </ul>
-  </nav>
+  <Navbars expand="lg" sticky="top" className="bg-dark text-white pt-3 pb-2">
+    <Container>
+      <Navbars.Brand href="#" className="text-light title d-flex">
+        <img src="#" alt="space-logo-img" />
+        <h3>Space Traveler&apos;s HUB</h3>
+      </Navbars.Brand>
+      <Nav>
+        {links.map((link) => (
+          <Nav.Item key={link.text}>
+            <Nav.Link href={link.path} className="text-light hover-bg mx-3">{ link.text }</Nav.Link>
+          </Nav.Item>
+        ))}
+      </Nav>
+    </Container>
+  </Navbars>
 );
 
 export default Navbar;
