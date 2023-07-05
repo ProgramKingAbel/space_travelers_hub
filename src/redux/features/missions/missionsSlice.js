@@ -63,14 +63,5 @@ const spaceMissionSlice = createSlice({
   },
 });
 
-/* eslint-disable */
-
-export const { joinMission, LeaveMission} = spaceMissionSlice.actions;
+export const { joinMission, LeaveMission } = spaceMissionSlice.actions;
 export default spaceMissionSlice.reducer;
-
-
-
-// state.spaceMission = action.payload.map((mission) => ({
-				// 	...mission,
-				// 	statusCheck:true
-				// }));
