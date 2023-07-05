@@ -6,7 +6,7 @@ import Col from 'react-bootstrap/Col';
 import Stack from 'react-bootstrap/Stack';
 import Image from 'react-bootstrap/Image';
 import Button from 'react-bootstrap/Button';
-import { fetchRockets, booked } from '../redux/features/rockets/rocketsSlice';
+import { fetchRockets, booked, cancelReservation } from '../redux/features/rockets/rocketsSlice';
 
 const RocketsPage = () => {
   const dispatch = useDispatch();
