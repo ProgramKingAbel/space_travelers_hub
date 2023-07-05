@@ -16,12 +16,12 @@ const rocketSlice = createSlice({
   reducers: {
     booked: (state, action) => {
       const id = action.payload;
-      state = state.map((rocket) => {
+      state.rockets = state.rockets.map((rocket) => {
         if (rocket.id === id) {
           return { ...rocket, reserved: true };
         }
         return rocket;
-      })
+      });
     },
   },
   extraReducers: (builder) => {
