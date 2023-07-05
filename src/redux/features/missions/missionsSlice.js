@@ -3,6 +3,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
+
 // const baseUrl = `https://api.spacexdata.com/v3/missions`;
 export const fetchMission = createAsyncThunk(
 	"missions/fetchMission",
@@ -21,9 +22,9 @@ export const fetchMission = createAsyncThunk(
 	}
 );
 
+
 const initialState = {
 	spaceMission: [],
-	status: false,
 	isLoading: false,
 	error: null,
 };
@@ -31,13 +32,35 @@ const initialState = {
 const spaceMissionSlice = createSlice({
 	name: "spaceMission",
 	initialState,
-	reducers: {},
+	reducers: {
+		joinMission:(state,action)=>{
+			const missionId = action.payload;
+			console.log(missionId)
+      state.spaceMission = state.spaceMission.map((mission) => {
+				console.log(mission.mission_id)
+        if (mission.mission_id === missionId) {
+          return { ...mission, statusCheck: true };
+        }
+        return mission;
+      });
+
+		},
+		LeaveMission:(state,action)=>{
+			const missionId = action.payload;
+      state.spaceMission = state.spaceMission.map((mission) => {
+        if (mission.mission_id === missionId) {
+          return { ...mission, statusCheck: false };
+        }
+        return mission;
+      });
+
+		}
+	},
 	extraReducers: (builder) => {
 		builder.addCase("missions/fetchMission/pending", (state) => {
 			state.isLoading = true
 		}),
 		builder.addCase("missions/fetchMission/fulfilled", (state, action) => {
-			console.log(action.payload)
 				state.spaceMission = action.payload;
 				state.isLoading = false;
 			}),
@@ -50,7 +73,12 @@ const spaceMissionSlice = createSlice({
 
 /* eslint-disable */
 
-export const { actions } = spaceMissionSlice.actions;
+export const { joinMission, LeaveMission} = spaceMissionSlice.actions;
 export default spaceMissionSlice.reducer;
 
 
+
+// state.spaceMission = action.payload.map((mission) => ({
+				// 	...mission,
+				// 	statusCheck:true
+				// }));

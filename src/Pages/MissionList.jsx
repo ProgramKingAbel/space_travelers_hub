@@ -11,8 +11,11 @@ const MissionList = () => {
   const {spaceMission,isLoading,error} = useSelector((state)=> state.spaceMission)
 
   useEffect(()=>{
-    dispatch(fetchMission())
-  },[dispatch])
+    if(spaceMission.length === 0){
+      dispatch(fetchMission())
+    }
+   
+  },[dispatch,spaceMission.length])
 
   if (isLoading) {
     return (
@@ -29,35 +32,43 @@ const MissionList = () => {
   } else if (Object.keys(spaceMission).length === 0) {
     return (
       <div>
-        <h3>No books found</h3>
+        <h3>No missions found</h3>
       </div>
     );
   } else{
     const missionData = Object.values(spaceMission);
     return(
-      <div>
-        <Table  responsive striped bordered hover>
-       <thead>
+     
+        <Table striped bordered hover variant="dark">
+          <thead>
             <tr>
-              <th>Mission</th>
-              <th colSpan={4}>Description</th>
+            <th>Mission</th>
+              <th className="text-center">Description</th>
               <th>Status</th>
-              <th></th>
+              <th>{' '}</th>
             </tr>
           </thead>
-          </Table>
-        {
+          <tbody>
+        
+         {
             missionData.map((item)=>(
+             
             <MissionItem 
             id={item.mission_id}
             title={item.mission_name}
             description={item.description}
+            statusCheck={item.statusCheck}
             /> 
             )
+            
             )
           }
-      </div>)
-  }
+        
+          </tbody>
+        
+</Table>
+    
+    )}
 
   }
   

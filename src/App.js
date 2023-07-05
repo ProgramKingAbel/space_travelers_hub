@@ -1,9 +1,11 @@
+/* eslint-disable */
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Layout from './Components/Layout';
 import {
   DragonsPage, MissionsPage, MyProfilePage, RocketsPage,
 } from './Pages';
+
 
 const App = () => (
   <Routes>
