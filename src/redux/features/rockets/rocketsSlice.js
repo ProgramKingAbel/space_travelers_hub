@@ -13,6 +13,26 @@ export const fetchRockets = createAsyncThunk('rocket/fetchRocket', () => axios.g
 const rocketSlice = createSlice({
   name: 'rocket',
   initialState,
+  reducers: {
+    booked: (state, action) => {
+      const id = action.payload;
+      state.rockets = state.rockets.map((rocket) => {
+        if (rocket.id === id) {
+          return { ...rocket, reserved: true };
+        }
+        return rocket;
+      });
+    },
+    cancelReservation: (state, action) => {
+      const id = action.payload;
+      state.rockets = state.rockets.map((rocket) => {
+        if (rocket.id === id) {
+          return { ...rocket, reserved: false };
+        }
+        return rocket;
+      });
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchRockets.pending, (state) => {
       state.loading = true;
@@ -26,3 +46,4 @@ const rocketSlice = createSlice({
 });
 
 export default rocketSlice.reducer;
+export const { booked, cancelReservation } = rocketSlice.actions;
