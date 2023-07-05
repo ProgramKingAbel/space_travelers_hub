@@ -11,7 +11,7 @@ import { fetchRockets, booked, cancelReservation } from '../redux/features/rocke
 
 const RocketsPage = () => {
   const dispatch = useDispatch();
-  const rockets = useSelector((state) => state.rocket.rockets);
+  const { rockets } = useSelector((state) => state.rockets);
   useEffect(() => {
     if (rockets.length === 0) {
       dispatch(fetchRockets());
