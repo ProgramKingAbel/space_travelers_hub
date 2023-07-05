@@ -6,6 +6,7 @@ import Col from 'react-bootstrap/Col';
 import Stack from 'react-bootstrap/Stack';
 import Image from 'react-bootstrap/Image';
 import Button from 'react-bootstrap/Button';
+import Badge from 'react-bootstrap/Badge';
 import { fetchRockets, booked, cancelReservation } from '../redux/features/rockets/rocketsSlice';
 
 const RocketsPage = () => {
@@ -26,11 +27,19 @@ const RocketsPage = () => {
             <Col sm={9}>
               <Stack gap={1}>
                 <h2>{rocket.rocket_name}</h2>
-                <p>{rocket.description}</p>
+                {rocket.reserved ? (
+                  <p>
+                    <Badge bg="info" style={{ marginRight: '10px' }}>Reserved</Badge>
+                    {rocket.description}
+                  </p>
+                ) : (
+                  <p>{rocket.description}</p>
+                )}
               </Stack>
               {rocket.reserved ? (
+                <Button variant="outline-secondary" onClick={() => { dispatch(cancelReservation(rocket.id)); }}>Cancel Reservation</Button>
+              ) : (
                 <Button variant="primary" onClick={() => { dispatch(booked(rocket.id)); }}>Reserve Rocket</Button>
-              ) : (<Button variant="outline-secondary" onClick={() => { dispatch(cancelReservation(rocket.id)); }}>Cancel Reservation</Button>
               )}
             </Col>
           </Row>
