@@ -21,7 +21,7 @@ const Navbar = () => (
       <Nav>
         {links.map((link) => (
           <Nav.Item key={link.text}>
-            <Nav.Link href={link.path} className="text-light hover-bg mx-3">{ link.text }</Nav.Link>
+            <Nav.Link href={link.path} className="text-primary hover-bg mx-3">{ link.text }</Nav.Link>
           </Nav.Item>
         ))}
       </Nav>
