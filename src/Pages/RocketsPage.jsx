@@ -13,8 +13,10 @@ const RocketsPage = () => {
   const dispatch = useDispatch();
   const rockets = useSelector((state) => state.rocket.rockets);
   useEffect(() => {
-    dispatch(fetchRockets());
-  }, [dispatch]);
+    if (rockets.length === 0) {
+      dispatch(fetchRockets());
+    }
+  }, [dispatch, rockets.length]);
 
   return (
     <Container>
