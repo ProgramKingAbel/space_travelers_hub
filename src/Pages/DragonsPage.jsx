@@ -21,6 +21,7 @@ const DragonsPage = () => {
           type={dragon.type}
           flickrImages={dragon.flickr_images[0]}
           description={dragon.description}
+          reserved={dragon.reserved || false}
         />
       ))}
     </section>
