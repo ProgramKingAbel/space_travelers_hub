@@ -28,7 +28,10 @@ const RocketsPage = () => {
                 <h2>{rocket.rocket_name}</h2>
                 <p>{rocket.description}</p>
               </Stack>
-              <Button variant="primary" onClick={() => { dispatch(booked(rocket.id)); }}>Reserve Rocket</Button>
+              {rocket.reserved ? (
+                <Button variant="primary" onClick={() => { dispatch(booked(rocket.id)); }}>Reserve Rocket</Button>
+              ) : (<Button variant="outline-secondary" onClick={() => { dispatch(booked(rocket.id)); }}>Cancel Reservation</Button>
+              )}
             </Col>
           </Row>
         ))
