@@ -6,6 +6,7 @@ import Col from 'react-bootstrap/Col';
 import Stack from 'react-bootstrap/Stack';
 import Image from 'react-bootstrap/Image';
 import Button from 'react-bootstrap/Button';
+import { booked } from '../redux/features/rockets/rocketsSlice';
 import { fetchRockets } from '../redux/features/rockets/rocketsSlice';
 
 const RocketsPage = () => {
@@ -28,7 +29,7 @@ const RocketsPage = () => {
                 <h2>{rocket.rocket_name}</h2>
                 <p>{rocket.description}</p>
               </Stack>
-              <Button variant="primary">Reserve Rocket</Button>
+              <Button variant="primary" onClick={dispatch(booked(rocket.id))}>Reserve Rocket</Button>
             </Col>
           </Row>
         ))
