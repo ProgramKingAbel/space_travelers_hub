@@ -17,7 +17,7 @@ const MyProfilePage = () => {
   const reservedDragons = dragons.filter((dragon) => dragon.reserved === true);
 
   return (
-    <Container>
+    <Container className="mt-4">
       <Row>
         {reservedRockets.length > 0 ? (
           <Col>
