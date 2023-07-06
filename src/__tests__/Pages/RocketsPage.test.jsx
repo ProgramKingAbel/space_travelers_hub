@@ -18,5 +18,19 @@ jest.mock('../../redux/features/rockets/rocketsSlice.js', () => ({
 }));
 
 describe('RocketsPage', () => {
-    
-})
+    useSelector.mockImplementation((selectorFn) =>
+        selectorFn({
+            rockets: {
+                rockets: [
+                    {
+                        id: 1,
+                        rocket_name: 'Falcon 9',
+                        flickr_images: ["https://farm1.staticflickr.com/929/28787338307_3453a11a77_b.jpg"],
+                        description: 'Rocket Description',
+                        reserve: false,
+                    },
+                ],
+            },
+        })
+    );
+});
