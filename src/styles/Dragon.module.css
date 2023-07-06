@@ -10,6 +10,9 @@
 .dragonImg img {
   width: 250px;
   height: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
 }
 
 .dragonInfo {
@@ -20,7 +23,16 @@
 }
 
 .dragonInfo h2 {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
+}
+
+.reservedText {
+  background-color: skyblue;
+  color: white;
+  padding: 5px;
+  margin-right: 5px;
+  font-size: 0.7rem;
+  border-radius: 5px;
 }
 
 .dragonInfo p {
@@ -29,9 +41,29 @@
 }
 
 .dragonInfo button {
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.reserve {
   background-color: blue;
   color: #fff;
-  padding: 10px 20px;
   border: none;
-  cursor: pointer;
+}
+
+.reserve:hover {
+  background-color: darkblue;
+}
+
+.cancel {
+  background-color: #fff;
+  border: 1px solid #777;
+  color: #777;
+}
+
+.cancel:hover {
+  background-color: #777;
+  color: #fff;
+  border: none;
 }

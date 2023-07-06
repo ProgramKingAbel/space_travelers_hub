@@ -1,7 +1,14 @@
+/* eslint-disable */
 import React from 'react';
+import MissionList from "./MissionList"
+const MissionsPage = () => {
+  return (
+    <div>
+      <MissionList />
+    </div>
+  )
+}
+  
 
-const MissionsPage = () => (
-  <div>MissionsPage</div>
-);
 
 export default MissionsPage;

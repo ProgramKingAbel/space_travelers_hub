@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+.mission-btn {
+  width: 100px;
+}
+
 body {
   font-family: Montserrat, sans-serif;
 }
