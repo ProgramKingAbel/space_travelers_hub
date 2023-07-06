@@ -1,49 +1,73 @@
-// import React from 'react';
-// import { render, screen } from '@testing-library/react';
-// import { useDispatch, useSelector } from 'react-redux';
-// import '@testing-library/jest-dom';
-// import DragonsPage from '../Pages/DragonsPage';
-// import { fetchDragons } from '../redux/features/dragons/dragonsSlice';
+import React from 'react';
+import { render, screen, fireEvent } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
+import { Provider } from 'react-redux';
+import configureStore from 'redux-mock-store';
+import DragonsPage from '../Pages/DragonsPage';
 
-// jest.mock('react-redux', () => ({
-//   useDispatch: jest.fn(),
-//   useSelector: jest.fn(),
-// }));
+const mockStore = configureStore([]);
 
-// describe('DragonsPage Component', () => {
-//   const dragons = [
-//     {
-//       id: '1',
-//       name: 'Test Dragon 1',
-//       flickr_images: ['test-image-1.jpg'],
-//       description: 'This is a test dragon 1.',
-//       reserved: false,
-//     },
-//     {
-//       id: '2',
-//       name: 'Test Dragon 2',
-//       flickr_images: ['test-image-2.jpg'],
-//       description: 'This is a test dragon 2.',
-//       reserved: true,
-//     },
-//   ];
+describe('DragonsPage', () => {
+  let store;
+  let renderedComponent;
 
-//   it('should render the DragonsPage component with dragons', () => {
-//     const dispatch = jest.fn();
-//     useDispatch.mockReturnValue(dispatch);
-//     useSelector.mockReturnValue({ dragons });
+  beforeEach(() => {
+    store = mockStore({
+      dragons: {
+        dragons: [
+          {
+            id: '1',
+            name: 'Dragon 1',
+            flickr_images: ['image1.jpg'],
+            description: 'Dragon 1 description',
+            reserved: false,
+          },
+          {
+            id: '2',
+            name: 'Dragon 2',
+            flickr_images: ['image2.jpg'],
+            description: 'Dragon 2 description',
+            reserved: true,
+          },
+        ],
+      },
+    });
+  });
 
-//     render(<DragonsPage />);
+  afterEach(() => {
+    renderedComponent.unmount();
+  });
 
-//     // Check if the dragon names are rendered
-//     expect(screen.getByText('Test Dragon 1')).toBeInTheDocument();
-//     expect(screen.getByText('Test Dragon 2')).toBeInTheDocument();
+  it('renders dragons correctly', () => {
+    renderedComponent = render(
+      <Provider store={store}>
+        <DragonsPage />
+      </Provider>,
+    );
 
-//     // Check if the dragon images are rendered
-//     expect(screen.getAllByRole('img')).toHaveLength(2);
+    const dragon1 = screen.getByText('Dragon 1');
+    expect(dragon1).toBeInTheDocument();
 
-//     // Check if fetchDragons action is dispatched
-//     expect(dispatch).toHaveBeenCalledTimes(1);
-//     expect(dispatch).toHaveBeenCalledWith(fetchDragons());
-//   });
-// });
+    const dragon2 = screen.getByText('Dragon 2');
+    expect(dragon2).toBeInTheDocument();
+
+    const reserveButton = screen.getByText('Reserve Dragon');
+    fireEvent.click(reserveButton);
+    expect(store.getActions()).toEqual([{ type: 'dragons/reserveDragon', payload: '1' }]);
+  });
+
+  it('renders reserved dragon correctly', () => {
+    renderedComponent = render(
+      <Provider store={store}>
+        <DragonsPage />
+      </Provider>,
+    );
+
+    const reservedText = screen.getByText('Reserved');
+    expect(reservedText).toBeInTheDocument();
+
+    const cancelReservationButton = screen.getByText('Cancel Reservation');
+    fireEvent.click(cancelReservationButton);
+    expect(store.getActions()).toEqual([{ type: 'dragons/cancelReservation', payload: '2' }]);
+  });
+});
