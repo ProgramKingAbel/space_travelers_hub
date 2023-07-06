@@ -1,4 +1,3 @@
-/** @format */
 import { configureStore } from '@reduxjs/toolkit';
 import spaceMissionSlice from './features/missions/missionsSlice';
 import rocketReducer from './features/rockets/rocketsSlice';
