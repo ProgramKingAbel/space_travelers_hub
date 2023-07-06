@@ -8,8 +8,10 @@ const DragonsPage = () => {
   const { dragons } = useSelector((store) => store.dragons);
 
   useEffect(() => {
-    dispatch(fetchDragons());
-  }, [dispatch]);
+    if (dragons.length === 0) {
+      dispatch(fetchDragons());
+    }
+  }, [dispatch, dragons.length]);
 
   return (
     <section className="dragons">
