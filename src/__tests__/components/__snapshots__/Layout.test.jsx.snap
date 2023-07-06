@@ -2,15 +2,28 @@
 
 exports[`Layout renders correctly 1`] = `
 <div>
-  <nav>
-    <h1>
-      Logo here
-    </h1>
-    <ul>
+  <nav
+    className="nav"
+  >
+    <div
+      className="logoDiv"
+    >
+      <img
+        alt="space-travelers-hub"
+        className="logo"
+        src="planet.png"
+      />
+      <h1>
+        Space Tavelers' Hub
+      </h1>
+    </div>
+    <ul
+      className="links"
+    >
       <li>
         <a
           aria-current="page"
-          className="active"
+          className="link active"
           href="/"
           onClick={[Function]}
         >
@@ -19,7 +32,7 @@ exports[`Layout renders correctly 1`] = `
       </li>
       <li>
         <a
-          className=""
+          className="link"
           href="/Dragons"
           onClick={[Function]}
         >
@@ -28,7 +41,7 @@ exports[`Layout renders correctly 1`] = `
       </li>
       <li>
         <a
-          className=""
+          className="link"
           href="/Missions"
           onClick={[Function]}
         >
@@ -37,7 +50,7 @@ exports[`Layout renders correctly 1`] = `
       </li>
       <li>
         <a
-          className=""
+          className="link"
           href="/Profile"
           onClick={[Function]}
         >
