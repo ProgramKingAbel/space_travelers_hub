@@ -61,10 +61,14 @@ const MissionItem = ({
 };
 
 MissionItem.propTypes = {
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  statusCheck: PropTypes.bool.isRequired,
+  statusCheck: PropTypes.bool,
+};
+
+MissionItem.defaultProps = {
+  statusCheck: false,
 };
 
 export default MissionItem;
