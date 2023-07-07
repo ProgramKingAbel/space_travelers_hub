@@ -1,51 +1,64 @@
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import { useDispatch, useSelector } from 'react-redux';
+import '@testing-library/jest-dom/extend-expect';
+import { booked, cancelReservation } from '../../redux/features/rockets/rocketsSlice';
 import RocketsPage from '../../Pages/RocketsPage';
-import { fetchRockets, booked, cancelReservation } from '../../redux/features/rockets/rocketsSlice';
 
-jest.mock('react-redux');
-
-// jest.mock('../../redux/features/rockets/rocketsSlice.js', () => ({
-//     fetchRockets: jest.fn(),
-//     booked: jest.fn(),
-//     cancelReservation: jest.fn(),
-// }));
+jest.mock('react-redux', () => ({
+  useDispatch: jest.fn(),
+  useSelector: jest.fn(),
+}));
 
 describe('RocketsPage', () => {
+  const mockDispatch = jest.fn();
+
   beforeEach(() => {
-    useDispatch.mockReturnValue(jest.fn());
+    useDispatch.mockReturnValue(mockDispatch);
+    useSelector.mockReturnValue({ rockets: [] });
   });
 
-  test('renders the component with rockets', () => {
-    const mockSelector = jest.spyOn(useSelector);
-    mockSelector.mockReturnValue({
-      rockets: [
-        {
-          id: 1,
-          rocket_name: 'Falcon 9',
-          flickr_images: ['https://farm1.staticflickr.com/929/28787338307_3453a11a77_b.jpg'],
-          description: 'Rocket description',
-          reserve: false,
-        },
-      ],
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
 
+  test('renders rocket information correctly', () => {
+    const rockets = [
+      {
+        id: 1,
+        rocket_name: 'Falcon 9',
+        description: 'Description of Falcon 9',
+        flickr_images: ['rocket_image.jpg'],
+        reserved: false,
+      },
+      {
+        id: 2,
+        rocket_name: 'Falcon Heavy',
+        description: 'Description of Falcon Heavy',
+        flickr_images: ['rocket_image.jpg'],
+        reserved: true,
+      },
+    ];
+
+    useSelector.mockReturnValue({ rockets });
+
+    const { getByText, getByTestId } = render(<RocketsPage />);
+
+    rockets.forEach((rocket) => {
+      expect(getByText(rocket.rocket_name)).toBeInTheDocument();
+      expect(getByText(rocket.description)).toBeInTheDocument();
+      expect(getByTestId(`rocket-image-${rocket.id}`)).toHaveAttribute('src', rocket.flickr_images[0]);
+
+      if (rocket.reserved) {
+        expect(getByText('Reserved')).toBeInTheDocument();
+        expect(getByText('Cancel Reservation')).toBeInTheDocument();
+        fireEvent.click(getByText('Cancel Reservation'));
+        expect(mockDispatch).toHaveBeenCalledWith(cancelReservation(rocket.id));
+      } else {
+        expect(getByText('Reserve Rocket')).toBeInTheDocument();
+        fireEvent.click(getByText('Reserve Rocket'));
+        expect(mockDispatch).toHaveBeenCalledWith(booked(rocket.id));
+      }
     });
-    render(<RocketsPage />);
-
-    // Assertions
-    expect(screen.getByText('Falcon 9')).toBeInTheDocument();
-    expect(screen.getByText('Rocket description')).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: 'Reserve Rocket' })).toBeInTheDocument();
-
-    mockSelector.mockRestore();
   });
-});
-
-afterEach(() => {
-  useDispatch.mockClear();
-  useSelector.mockClear();
-  // fetchRockets.mockClear();
-  // booked.mockClear();
-  // cancelReservation.mockClear();
 });
