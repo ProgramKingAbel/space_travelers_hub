@@ -24,7 +24,7 @@ const RocketsPage = () => {
         rockets.map((rocket) => (
           <Row key={rocket.id} style={{ marginTop: '15px', marginBottom: '15px' }}>
             <Col sm={3}>
-              <Image src={rocket.flickr_images[0]} thumbnail data-testid={`rocket-image-${rocket.id}`}/>
+              <Image src={rocket.flickr_images[0]} thumbnail data-testid={`rocket-image-${rocket.id}`} />
             </Col>
             <Col sm={9}>
               <Stack gap={1}>
