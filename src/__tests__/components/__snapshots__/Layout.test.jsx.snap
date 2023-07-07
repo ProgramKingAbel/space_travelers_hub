@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Layout renders correctly 1`] = `
+<div>
+  <nav
+    className="nav"
+  >
+    <div
+      className="logoDiv"
+    >
+      <img
+        alt="space-travelers-hub"
+        className="logo"
+        src="planet.png"
+      />
+      <h1>
+        Space Travelers' Hub
+      </h1>
+    </div>
+    <ul
+      className="links"
+    >
+      <li>
+        <a
+          aria-current="page"
+          className="link active"
+          href="/"
+          onClick={[Function]}
+        >
+          Rockets
+        </a>
+      </li>
+      <li>
+        <a
+          className="link"
+          href="/Dragons"
+          onClick={[Function]}
+        >
+          Dragons
+        </a>
+      </li>
+      <li>
+        <a
+          className="link"
+          href="/Missions"
+          onClick={[Function]}
+        >
+          Missions
+        </a>
+      </li>
+      <li>
+        <a
+          className="link"
+          href="/Profile"
+          onClick={[Function]}
+        >
+          My Profile
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>
+`;

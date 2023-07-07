@@ -1,0 +1,46 @@
+.nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  align-items: center;
+  width: 90%;
+  margin: 0 auto;
+  border-bottom: 1px solid #777;
+}
+
+.logoDiv {
+  display: flex;
+  gap: 20px;
+}
+
+.logo {
+  width: 50px;
+  height: 50px;
+}
+
+.links {
+  display: flex;
+  list-style: none;
+  margin-top: 15px;
+}
+
+.links li {
+  padding: 0 25px;
+  border-left: 2px solid #777;
+}
+
+.links li:first-child {
+  border-left: 0;
+}
+
+.links li:last-child {
+  padding-right: 0;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.link:focus {
+  text-decoration: underline;
+}
