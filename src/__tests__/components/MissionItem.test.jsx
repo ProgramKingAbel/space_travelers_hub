@@ -5,7 +5,6 @@ import '@testing-library/jest-dom/extend-expect';
 import { joinMission, LeaveMission } from '../../redux/features/missions/missionsSlice';
 import { MissionItem } from '../../Components';
 
-
 jest.mock('react-redux', () => ({
   useDispatch: jest.fn(),
 }));
@@ -35,7 +34,7 @@ describe('MissionItem', () => {
           {/* eslint-disable-next-line react/jsx-props-no-spreading */}
           <MissionItem {...mission} />
         </tbody>
-      </table>
+      </table>,
     );
 
     expect(getByText(mission.title)).toBeInTheDocument();
@@ -57,7 +56,7 @@ describe('MissionItem', () => {
           {/* eslint-disable-next-line react/jsx-props-no-spreading */}
           <MissionItem {...mission} statusCheck={false} />
         </tbody>
-      </table>
+      </table>,
     );
 
     const notMemberButtons = getAllByTestIdSecondRender('member-button');
