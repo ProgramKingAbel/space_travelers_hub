@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import { MemoryRouter } from 'react-router-dom';
-import Navbar from '../Components/Navbar';
+import Navbar from '../../Components/Navbar';
 
 describe('Navbar', () => {
   it('renders navbar links correctly', () => {

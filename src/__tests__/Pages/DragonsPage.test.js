@@ -3,7 +3,7 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
-import DragonsPage from '../Pages/DragonsPage';
+import DragonsPage from '../../Pages/DragonsPage';
 
 const mockStore = configureStore([]);
 

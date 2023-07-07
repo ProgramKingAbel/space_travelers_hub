@@ -14,7 +14,7 @@ exports[`Layout renders correctly 1`] = `
         src="planet.png"
       />
       <h1>
-        Space Tavelers' Hub
+        Space Travelers' Hub
       </h1>
     </div>
     <ul
