@@ -14,7 +14,7 @@ const Navbar = () => (
   <nav className={style.nav}>
     <div className={style.logoDiv}>
       <img src={logo} alt="space-travelers-hub" className={style.logo} />
-      <h1>Space Tavelers&apos; Hub</h1>
+      <h1>Space Travelers&apos; Hub</h1>
     </div>
     <ul className={style.links}>
       {links.map((link) => (
