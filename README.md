@@ -1,32 +1,9 @@
 <a name="readme-top"></a>
 
-<!--
-HOW TO USE:
-This is an example of how you may give instructions on setting up your project locally.
-
-Modify this file to match your project and remove sections that don't apply.
-
-REQUIRED SECTIONS:
-- Table of Contents
-- About the Project
-  - Built With
-  - Live Demo
-- Getting Started
-- Authors
-- Future Features
-- Contributing
-- Show your support
-- Acknowledgements
-- License
-
-OPTIONAL SECTIONS:
-- FAQ
-
-After you're finished please remove all the comments and instructions!
--->
 
 <div align="center">
-Space Travelers Hub</b></h2>
+<img src="./public/planet.png" width="75px" height="75px">
+<h1><b>Space Travelers Hub</b></h1>
 
 </div>
 
@@ -39,6 +16,7 @@ Space Travelers Hub</b></h2>
   - [🛠 Built With ](#-built-with-)
     - [Tech Stack ](#tech-stack-)
     - [Key Features ](#key-features-)
+  - [🚀 Live Demo ](#-live-demo-)
   - [💻 Getting Started ](#-getting-started-)
     - [Prerequisites](#prerequisites)
     - [Setup](#setup)
@@ -82,34 +60,30 @@ Space Travelers Hub</b></h2>
 <summary>Style</summary>
   <ul>
     <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS</a></li>
-  </ul>
-</details>
-
-<details>
-<summary>Bundle</summary>
-  <ul>
-    <li><a href="https://webpack.js.org/">Webpack</a></li>
+     <li><a href="https://react-bootstrap.github.io/docs/getting-started/introduction">React-bootstrap</a></li>
   </ul>
 </details>
 
 <details>
 <summary>Test</summary>
   <ul>
-    <li><a href="https://jestjs.io/">Jest</a></li>
+    <li><a href="https://jestjs.io/">React testing library and Jest</a></li>
+     
   </ul>
 </details>
 
-<!-- Features -->
-
 ### Key Features <a name="key-features"></a>
-
-- **Build with React and Redux Library**
-- ****
-- ****
+- **Rocket book and Reservation**
+- **Dragon book and Reservation**
+- **Mission Join and Leaving**
+- **User profile**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- GETTING STARTED -->
+## 🚀 Live Demo <a name="live-demo"></a>
+- [Live Demo Link - Available on render](https://space-travellers-hub-2ve1.onrender.com/)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## 💻 Getting Started <a name="getting-started"></a>
 
@@ -118,7 +92,6 @@ To get a local copy up and running, follow these steps.
 ### Prerequisites
 
 In order to run this project you need:
-
 - Browser
 - Code Editor
 - Node.js
@@ -193,10 +166,9 @@ You can deploy this project using:
 <!-- FUTURE FEATURES -->
 
 ## 🔭 Future Features <a name="future-features"></a>
-
-- [ ] ****
-- [ ] ****
-- [ ] ****
+- [ ] **Send message**
+- [ ] **Online payment**
+- [ ] **Membership printing card**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -206,7 +178,7 @@ You can deploy this project using:
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](../../issues/).
+Feel free to check the [issues page]((https://github.com/ProgramKingAbel/space_travelers_hub/issues/)).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
