@@ -32,6 +32,7 @@ describe('MissionItem', () => {
     const { getByText, getAllByTestId } = render(
       <table>
         <tbody>
+          {/* eslint-disable-next-line react/jsx-props-no-spreading */}
           <MissionItem {...mission} />
         </tbody>
       </table>
@@ -53,6 +54,7 @@ describe('MissionItem', () => {
     const { getByText: getByTextSecondRender, getAllByTestId: getAllByTestIdSecondRender } = render(
       <table>
         <tbody>
+          {/* eslint-disable-next-line react/jsx-props-no-spreading */}
           <MissionItem {...mission} statusCheck={false} />
         </tbody>
       </table>
