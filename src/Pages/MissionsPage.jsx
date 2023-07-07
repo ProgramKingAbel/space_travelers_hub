@@ -1,14 +1,11 @@
-/* eslint-disable */
 import React from 'react';
-import MissionList from "./MissionList"
-const MissionsPage = () => {
-  return (
-    <div>
-      <MissionList />
-    </div>
-  )
-}
-  
+import { Container } from 'react-bootstrap';
+import { MissionList } from '../Components';
 
+const MissionsPage = () => (
+  <Container>
+    <MissionList />
+  </Container>
+);
 
 export default MissionsPage;

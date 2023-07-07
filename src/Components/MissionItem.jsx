@@ -30,7 +30,7 @@ const MissionItem = ({
       <td>{description}</td>
       <td>
         { ' '}
-        <span>
+        <span data-testid="member-button">
           {
           statusCheck ? (
             <Button variant="primary" style={{ width: '140px' }}>
